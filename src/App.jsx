@@ -1,34 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes ,Route } from "react-router-dom";
+import DashboardLayout from "./layout/dashboard/dashboard";
+import Home from "./pages/home/home";
+import SearchCourses from "./pages/course/search";
+import GroupCourses from "./pages/course/group";
+import Course from "./pages/course/course";
+import MiniLayout from "./layout/minLayout/mini";
+import LoginComponent from "./pages/auth/login";
+import Register from "./pages/auth/register";
+import ChangePassword from "./pages/auth/change";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path = {"/"} element = {<DashboardLayout />}>
+          <Route path = {""} element = { <Home /> } index/>
+          <Route path ="courses/search/:text" element ={<SearchCourses />}/>
+          <Route path ="courses/group/:group" element ={<GroupCourses />}/>
+          <Route path ="courses/id/:id" element ={<Course />}/>
+        </Route>
+        <Route path={"/auth/"} element={<MiniLayout />}>
+          <Route path={"login"} element={<LoginComponent />} />
+
+          <Route path={"register"} element={<Register />} />
+          <Route path={"forget/password"} element={<ChangePassword />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
