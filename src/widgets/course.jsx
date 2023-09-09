@@ -2,12 +2,16 @@
 import "./index.css"
 import Rating from '@mui/material/Rating';
 import Skeleton from '@mui/material/Skeleton';
+import { useNavigate } from "react-router-dom";
 // import StarIcon from '@mui/icons-material/Star';
 const CourseWidget = (props) => {
   // eslint-disable-next-line react/prop-types
-  var { loading , title,author,rating , participant,thumbnail } = props;
+  var { loading , title,author,rating , participant,thumbnail ,id} = props;
+  const navigate = useNavigate()
   return (
-    <div className="course-container" style={{marginLeft:"5px",position:"relative",width:"250px"}}>
+    <div className="course-container" style={{marginLeft:"5px",position:"relative",width:"250px"}} onClick={()=>{
+      navigate("/courses/id/"+id)
+    }}>
       {loading?<Skeleton sx={{ height: 135,width:240 }} animation="wave" variant="rectangular" />:
       <img src={thumbnail} alt="" className="course-card-image-module--image--3V2QD course-card-module--course-image--2Pg51 browse-course-card--image--1-_Wa" width="240" height="135" loading="lazy"></img>}
       <div className="course-content" style={{padding:"5px"}}>

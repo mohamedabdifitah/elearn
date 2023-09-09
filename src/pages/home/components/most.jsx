@@ -47,13 +47,18 @@ const Suggestion = () => {
                 width="40%"
                 
                 
-                />:<p >Take one of Udemy’s range of Python courses and learn how to code using this incredibly useful language</p>}
+                />:<p >Take one of Elearn’s range of Python courses and learn how to code using this incredibly useful language</p>}
           </div>
           {/* <div style={{display:"flex",justifyContent:"end",gridColumn:2,gridRow:1}}>
             {loading?<Skeleton variant="circular" width={50} height={40} />:<IconButton onClick={()=>{navigate("courses/group/44")}}><BsFillArrowRightCircleFill /></IconButton>}
           </div> */}
         </div>
-        <div style={{display:"flex",position:"relative",padding:"0px 5px",gap: "10px"}}>
+        <div style={{display:"grid",position:"relative",padding:"0px 5px",gap: "10px",gridTemplateColumns:"repeat(5,auto)"}}>
+          <CourseWidget loading={loading}/>
+          <CourseWidget loading={loading}/>
+          <CourseWidget loading={loading}/>
+          <CourseWidget loading={loading}/>
+          <CourseWidget loading={loading}/>      
           <CourseWidget loading={loading}/>
           <CourseWidget loading={loading}/>
           <CourseWidget loading={loading}/>
@@ -83,16 +88,16 @@ const Suggestion = () => {
               width="40%"
               
               
-              />:<p >Take one of Udemy’s range of Python courses and learn how to code using this incredibly useful language</p>}
+              />:<p >Take one of Elearn’s range of Python courses and learn how to code using this incredibly useful language</p>}
         </div>
         {/* <div style={{display:"flex",justifyContent:"end",gridColumn:2,gridRow:1}}>
           {loading?<Skeleton variant="circular" width={50} height={40} />:<IconButton onClick={()=>{navigate("courses/group/44")}}><BsFillArrowRightCircleFill /></IconButton>}
         </div> */}
       </div>
-      <div style={{display:"flex",position:"relative",padding:"0px 5px",gap: "10px"}}>
+      <div style={{display:"grid",position:"relative",padding:"0px 5px",gap: "10px",gridTemplateColumns:"repeat(5,auto)"}}>
         {courses.map((course) =>{
             // eslint-disable-next-line react/jsx-key
-            return <CourseWidget loading={loading} title={course.title} thumbnail={course.thumbnail} />
+            return <CourseWidget loading={loading} title={course.title} thumbnail={course.thumbnail} id={course.id}/>
           })
 
         }

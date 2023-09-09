@@ -1,17 +1,21 @@
 import { Avatar, Button } from "@mui/material"
+import { useContext } from "react"
 import { AiOutlineSearch } from "react-icons/ai"
 import { useNavigate } from "react-router-dom"
+import AuthContext from "../../context/authprovider"
 const Header = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const { setSearch,search,auth} = useContext(AuthContext);
   const SearchHandler = (e ) =>{
     e.preventDefault();
-    let search = e.target[0].value
-    navigate("courses/search/"+search)
+    let search = e.target.value
+    setSearch(search)
+    // navigate("/courses/search?text="+search)
   }
   return (
     <header>
       <div className="dashboard-header">
-        <img style={{visibility:"hidden" }} src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Udemy" width="91" height="34" loading="lazy"></img>
+        <img  src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Udemy" width="91" height="34" loading="lazy"></img>
         <div>
 
         </div>
@@ -20,20 +24,19 @@ const Header = () => {
             <AiOutlineSearch />
             
           </div>
-          <form  onSubmit={SearchHandler}  className="searchform" style={{position:"relative",width:"90%"}}>
+          <div    className="searchform" style={{position:"relative",width:"90%"}}>
             
-            <input type="text" style={{fontSize:"17px",fontFamily:"var(--font-stack-text)"}}/>
-          </form>
+            <input value={search} onChange={(e) =>{
+              e.preventDefault()
+              setSearch(e.target.value)
+            }} type="text" style={{fontSize:"17px",fontFamily:"var(--font-stack-text)"}}/>
+          </div>
           
         </div>
 
-        {!true?<div style={{display:"flex",width:"170px",justifyContent:"space-between",height:"40px",flexDirection:"row"}}>
-          <Button variant="contained">Login</Button>
-          <Button variant="contained">Signup</Button>
-
-        </div>:
-        <Avatar src="https://img-c.udemycdn.com/course/240x135/1565838_e54e_16.jpg" />
-        }
+        
+        <Avatar />
+        {/* } */}
       </div>
       
     </header>

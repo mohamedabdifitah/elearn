@@ -1,19 +1,26 @@
-import axios from "axios";
+import React, { useState } from "react";
 import "./index.css"
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { base } from "../../api/request";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-const ChangePassword = () => {
+function useQuery() {
+  const { search } = useLocation();
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+const ResetPassword = () => {
+  var query = useQuery()
+  var token = query.get("token")
   const [errMsg , setErrMsg] = useState()
   const navigate = useNavigate()
-  // const [res ,setRes] = useState()
+
   async function handleForget(e){
     e.preventDefault()
-    let email = e.target[0].value
+    var password = e.target[0].value
     try {
-      const response = await axios.post(base+"student/forget/password",
+      const response = await axios.post(base+"student/reset/password",
         {
-          email: email,
+          password:password,
+          token:token
         },
         {
             headers: { 'Content-Type': 'application/json' },
@@ -32,10 +39,9 @@ const ChangePassword = () => {
       } else if (err.response?.status === 401) {
           setErrMsg('Unauthorized');
       } else {
-          setErrMsg('Login Failed');
+          setErrMsg(err.response?.data);
       }
     }
-
   }
   return (
     <div style={{position:"relative",width:"100%",height:"100vh",background:"rgb(0 0 0)",alignItems:"center",display:"flex",flexDirection:"column",paddingTop:"15px"}}>
@@ -44,10 +50,12 @@ const ChangePassword = () => {
         <div className="shape"></div>
     </div>
     <form id="form" onSubmit={handleForget}>
-        <h3>Forget Password</h3>
-        <label htmlFor="email">Email</label>
-        <input type="text" placeholder="Email" id="email"/>
-        <input id="submit" type="submit" value={"send"}/>
+        <h3>Reset Password</h3>
+        <label htmlFor="passwor">Password</label>
+        <input type="password" placeholder="type password" id="password"/>
+        <label htmlFor="email">Retype password</label>
+        <input type="password" placeholder="retype password" id="password"/>
+        <input id="submit" type="submit" value={"change"}/>
         <br></br>
         {errMsg?<p style={{color:"red"}}>{errMsg}</p>:null}
     </form>
@@ -55,4 +63,4 @@ const ChangePassword = () => {
   )
 }
 
-export default ChangePassword
+export default ResetPassword

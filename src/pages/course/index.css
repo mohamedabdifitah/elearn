@@ -1,0 +1,25 @@
+.course-descript{
+  position: relative;
+  width: 100%;
+  height: 232.547px;
+  display: flex;
+  padding-top: 40px;
+  background-color: #2d2f31;
+  flex-direction: row;
+  color: whitesmoke;
+  padding-left: 90px;
+  line-break: loose;
+  /* padding: 40px; */
+}
+.lesson-container{
+  position: relative;
+  width:  700px;
+  /* left: ; */
+  /* margin: 2; */
+}
+.goals{
+  position: relative;
+  width: 700px;
+  min-height: 250px;
+  border: 0.5px solid black;
+}
