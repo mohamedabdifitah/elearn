@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export var base = "http://localhost/"
+export var base = "https://elearnserver.onrender.com/"
 export function GetAllCourses(){
   // let response
   axios.get(base+"course/all")
