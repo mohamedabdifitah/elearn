@@ -2,8 +2,10 @@ import axios from "axios";
 import { base } from "../../api/request";
 import "./index.css"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [errMsg , setErrMsg] = useState()
+  const navigate = useNavigate()
   async function handleCreate(e) {
     e.preventDefault();
     let username = e.target[0].value
@@ -22,6 +24,9 @@ const Register = () => {
             // withCredentials: true
           }
       );
+      if(response.status == 201){
+        navigate("/auth/login")
+      }
       console.log(JSON.stringify(response?.data));
       //console.log(JSON.stringify(response));
       // const accessToken = response?.data?.accessToken;
@@ -59,8 +64,13 @@ const Register = () => {
 
         <label htmlFor="password">Password</label>
         <input type="password" placeholder="Password" id="password"/>
+        <div style={{position:"relative",display:"flex",width:"100%",gap:"200px",top:"15px"}}>
+          <a style={{alignSelf:"end"}} href="/auth/login">login</a>
+          <a href="/auth/forget/password">forgot password</a>
 
+        </div>
         <input id="submit" type="submit" value={"register"}/>
+        
         <br></br>
         {errMsg?<p style={{color:"red"}}>{errMsg}</p>:null}
     </form>

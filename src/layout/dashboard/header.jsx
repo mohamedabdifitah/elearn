@@ -1,8 +1,9 @@
-import { Avatar, Button } from "@mui/material"
+import { Avatar, Button, IconButton } from "@mui/material"
 import { useContext } from "react"
-import { AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineLogout, AiOutlineSearch } from "react-icons/ai"
 import { useNavigate } from "react-router-dom"
 import AuthContext from "../../context/authprovider"
+import Cookies from "js-cookie"
 const Header = () => {
   // const navigate = useNavigate()
   const { setSearch,search,auth} = useContext(AuthContext);
@@ -11,6 +12,10 @@ const Header = () => {
     let search = e.target.value
     setSearch(search)
     // navigate("/courses/search?text="+search)
+  }
+  function Logout(){
+    Cookies.remove("auth")
+    window?.location?.reload()
   }
   return (
     <header>
@@ -35,7 +40,9 @@ const Header = () => {
         </div>
 
         
-        <Avatar />
+        <IconButton onClick={() =>{Logout()}}>
+          <AiOutlineLogout />
+        </IconButton>
         {/* } */}
       </div>
       

@@ -6,6 +6,7 @@ import { base } from "../../api/request";
 import AuthContext from "../../context/authprovider";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+// import { AiFillEyeInvisible , AiFillEye} from "react-icons/"
 const LoginComponent = () => {
   const [ showPassword , setShowPassword] = useState(false)
   const { setAuth } = useContext(AuthContext);
@@ -61,11 +62,12 @@ const LoginComponent = () => {
     <form id="form" onSubmit={handleLogin}>
         <h3>Login Here</h3>
 
-        <label htmlFor="username">Username</label>
+        <label htmlFor="email">Email</label>
         <input type="text" placeholder="Email or Phone" id="username"/>
 
         <label htmlFor="password">Password</label>
         <input type="password" placeholder="Password" id="password"/>
+
         <div style={{position:"relative",display:"flex",width:"100%",gap:"200px",top:"15px"}}>
           <a style={{alignSelf:"end"}} href="/auth/register">register</a>
           <a href="/auth/forget/password">forgot password</a>
