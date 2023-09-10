@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header>
       <div className="dashboard-header">
-        <img  src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Udemy" width="91" height="34" loading="lazy"></img>
+        <img  src="https://dcassetcdn.com/design_img/673809/440505/440505_4205864_673809_image.png" alt="Udemy" width="91" height="34" loading="lazy"></img>
         <div>
 
         </div>
