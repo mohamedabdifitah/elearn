@@ -12,7 +12,7 @@ const About = () => {
           
         </h2>
       </div>
-      <img style={{paddingLeft:"20px"}} width={300} height={350} src='/public/metoo.jfif' />
+      <img style={{paddingLeft:"20px"}} width={300} height={350} src='/metoo.jfif' />
     </div>
   )
 }
