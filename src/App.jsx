@@ -11,6 +11,7 @@ import ChangePassword from "./pages/auth/change";
 import { useContext } from "react";
 import AuthContext from "./context/authprovider";
 import ResetPassword from "./pages/auth/resetpassword";
+import About from "./pages/about";
 function App() {
   const { auth} = useContext(AuthContext);
   // console.log(a
@@ -30,6 +31,7 @@ function App() {
           <Route path={"forget/password"} element={<ChangePassword />} />
           <Route path={"reset/password"} element={<ResetPassword />} />
         </Route>
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   )
