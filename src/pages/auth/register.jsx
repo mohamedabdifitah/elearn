@@ -24,9 +24,9 @@ const Register = () => {
             // withCredentials: true
           }
       );
-      if(response.status == 201){
-        navigate("/auth/login")
-      }
+      // if(response.status == 200){
+      // }
+      
       console.log(JSON.stringify(response?.data));
       //console.log(JSON.stringify(response));
       // const accessToken = response?.data?.accessToken;
@@ -34,6 +34,8 @@ const Register = () => {
       // setAuth({ user, pwd, roles, accessToken });
       // setUser('');
       // setPwd('');
+      navigate("/auth/login");
+      // window.location.replace("/auth/login")
       // setSuccess(true);
   } catch (err) {
       if (!err?.response) {
